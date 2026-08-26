@@ -1,0 +1,88 @@
+.wpb_animate_when_almost_visible {
+	position: relative;
+	transition: none !important;
+	z-index: 1
+}
+.cz_sticky_row.vc_row {
+	position: fixed !important;
+	width: 101% !important;
+	bottom: 0 !important;
+	left: 0 !important;
+	right: auto;
+	z-index: 999
+}
+.cz_five_columns > .wpb_column,
+.cz_five_columns > .vc_vc_column {
+	width: calc( 100% / 5 )
+}
+.cz_five_columns > .wpb_column:last-child,
+.cz_five_columns > .vc_vc_column:last-child {
+	display: none
+}
+.fixed_bg, 
+.fixed_bg .vc_parallax-inner,
+.cz_fixed_bg, 
+.cz_fixed_bg .vc_parallax-inner {
+	background-attachment: fixed
+}
+.vc_row {
+	position: relative;
+	z-index: auto
+}
+div.vc_row[data-vc-full-width],
+footer div.vc_row[data-vc-full-width] {
+	overflow: visible
+}
+div.vc_parallax, 
+div.vc_parallax[data-vc-full-width] {
+	overflow: hidden !important
+}
+div.vc_col-has-fill > .vc_column-inner, 
+div.vc_row-has-fill + .vc_row-full-width + .vc_row > .vc_column_container > .vc_column-inner, 
+div.vc_row-has-fill + .vc_row>.vc_column_container > .vc_column-inner, 
+div.vc_row-has-fill > .vc_column_container > .vc_column-inner,
+div.vc_row-has-fill + .vc_vc_row > .vc_row > .vc_vc_column > .vc_column_container > .vc_column-inner, 
+div.vc_row-has-fill + .vc_vc_row_inner > .vc_row > .vc_vc_column_inner > .vc_column_container > .vc_column-inner, 
+div.vc_row-has-fill > .vc_row > .vc_vc_column > .vc_column_container > .vc_column-inner, 
+div.vc_row-has-fill > .vc_vc_column_inner > .vc_column_container > .vc_column-inner {
+	padding-top: 0
+}
+.no_padding .vc_column_container > .vc_column-inner,
+.nopadding .vc_column_container > .vc_column-inner {
+	padding: 0
+}
+.vc_message_box {
+	padding: 1em 2em 1em 5.5em
+}
+.vc_message_box-icon {
+	border-right: 1px dotted;
+	box-shadow: 5px 0 1px rgba(50, 50, 93, .04)
+}
+.vc_cz_contact_form_7 {
+	min-height: 40px
+}
+.vc_row.vc_row-flex > .vc_column_container > .vc_column-inner {
+	z-index: auto !important
+}
+.vc_gitem_row .vc_gitem-col {
+	padding: 30px 30px 10px !important
+}
+.vc_gitem-post-data-source-post_excerpt > div {
+	line-height: 2 !important
+}
+.vc_gitem-post-data-source-post_title > div {
+	font-weight: 500 !important
+}
+.vc_gitem-animate-slideBottom .vc_gitem-zone-b, 
+.vc_gitem-animate-slideInLeft .vc_gitem-zone-b {
+	transition: all .4s ease-in-out !important
+}
+.no-js div[data-vc-parallax-image] {
+	background-color: #67676736
+}
+.no-js .vc_row[data-vc-full-width-temp] {
+	left: initial;
+	right: initial;
+	margin: 0 auto;
+	width: initial
+}
