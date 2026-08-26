@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/texasspinepain-clone/texasspinepain.com/$1"
+    }
+  ]
+}
