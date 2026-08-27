@@ -8,6 +8,8 @@ export default function RunScripts({ children }) {
   useEffect(() => {
     if (!containerRef.current) return;
     
+    const addedScripts = [];
+    
     // Slight delay to ensure DOM is fully painted
     const timer = setTimeout(() => {
       const scripts = Array.from(containerRef.current.querySelectorAll('script'));
@@ -28,14 +30,17 @@ export default function RunScripts({ children }) {
         newScript.innerHTML = oldScript.innerHTML;
         newScript.dataset.executed = "true";
         
+        addedScripts.push(newScript);
+        
         if (newScript.src) {
           newScript.onload = () => loadScript(index + 1);
           newScript.onerror = () => loadScript(index + 1);
-          oldScript.parentNode.replaceChild(newScript, oldScript);
+          oldScript.parentNode.insertBefore(newScript, oldScript.nextSibling);
         } else {
-          oldScript.parentNode.replaceChild(newScript, oldScript);
+          oldScript.parentNode.insertBefore(newScript, oldScript.nextSibling);
           loadScript(index + 1);
         }
+        oldScript.dataset.executed = "true";
       };
       
       const waitForJQuery = () => {
@@ -54,7 +59,14 @@ export default function RunScripts({ children }) {
       waitForJQuery();
     }, 100);
     
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
+      addedScripts.forEach(script => {
+        if (script.parentNode) {
+          script.parentNode.removeChild(script);
+        }
+      });
+    };
   }, [location.pathname]); // Re-run when location changes
 
   return <div ref={containerRef}>{children}</div>;

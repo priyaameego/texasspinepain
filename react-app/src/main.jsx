@@ -13,6 +13,7 @@ import './index.css'
 import HomePage from './routes/index.jsx'
 import ContactUsPage from './routes/contact-us/index.jsx'
 import DrPriteshPatelPage from './routes/dr-pritesh-patel/index.jsx'
+import AboutUsPage from './routes/about-us/index.jsx'
 import ExpertPainManagementPage from './routes/expert-pain-management-in-dallas/index.jsx'
 import FaqPage from './routes/frequently-asked-questions/index.jsx'
 import InsuranceBenefitsPage from './routes/insurance-benefits/index.jsx'
@@ -28,7 +29,7 @@ const indexRoute = createRoute({ getParentRoute: () => rootRoute, path: '/', com
 const contactUsRoute = createRoute({ getParentRoute: () => rootRoute, path: '/contact-us', component: ContactUsPage })
 const drPriteshPatelRoute = createRoute({ getParentRoute: () => rootRoute, path: '/dr-pritesh-patel', component: DrPriteshPatelPage })
 const expertPainManagementRoute = createRoute({ getParentRoute: () => rootRoute, path: '/expert-pain-management-in-dallas', component: ExpertPainManagementPage })
-const aboutUsRoute = createRoute({ getParentRoute: () => rootRoute, path: '/about-us', component: ExpertPainManagementPage })
+const aboutUsRoute = createRoute({ getParentRoute: () => rootRoute, path: '/about-us', component: AboutUsPage })
 const faqRoute = createRoute({ getParentRoute: () => rootRoute, path: '/frequently-asked-questions', component: FaqPage })
 const insuranceBenefitsRoute = createRoute({ getParentRoute: () => rootRoute, path: '/insurance-benefits', component: InsuranceBenefitsPage })
 const letterOfProtectionRoute = createRoute({ getParentRoute: () => rootRoute, path: '/letter-of-protection', component: LetterOfProtectionPage })
@@ -44,6 +45,30 @@ const routeTree = rootRoute.addChildren([
 ])
 
 const router = createRouter({ routeTree })
+
+// Monkey-patch Node.prototype to prevent React crashes 
+// when jQuery plugins (like Slick Carousel) mutate the DOM underneath it.
+const originalRemoveChild = Node.prototype.removeChild;
+Node.prototype.removeChild = function(child) {
+  if (child.parentNode !== this) {
+    if (this.contains(child)) {
+      return child.parentNode.removeChild(child);
+    }
+    return child;
+  }
+  return originalRemoveChild.call(this, child);
+};
+
+const originalInsertBefore = Node.prototype.insertBefore;
+Node.prototype.insertBefore = function(newNode, referenceNode) {
+  if (referenceNode && referenceNode.parentNode !== this) {
+    if (this.contains(referenceNode)) {
+      return referenceNode.parentNode.insertBefore(newNode, referenceNode);
+    }
+    return originalInsertBefore.call(this, newNode, null);
+  }
+  return originalInsertBefore.call(this, newNode, referenceNode);
+};
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
