@@ -1,0 +1,97 @@
+[class*='cz_row_shape_'] .row:before,
+[class*='cz_row_shape_'] .row:after,
+.elms_row [class*='cz_row_shape_']:before,
+.elms_row [class*='cz_row_shape_']:after {
+	position: absolute;
+	content: '';
+	top: 0;
+	width: 138px;
+	height: 100%;
+	background: inherit;
+	z-index: 0
+}
+[class*='cz_row_shape_'] > .elms_row > .clr,
+[class*='cz_row_shape_'] > .cz_elm {
+	z-index: 1
+}
+[class*='cz_row_shape_'] > [class*='cz_elm search_'] {
+	z-index: 2
+}
+[class*='cz_row_shape_'] .row:before,
+.elms_row [class*='cz_row_shape_']:before {
+	left: 0;
+	border-radius: inherit;
+	border-bottom-right-radius: 0;
+	border-top-right-radius: 0
+}
+[class*='cz_row_shape_'] .row:after,
+.elms_row [class*='cz_row_shape_']:after {
+	right: 0;
+	border-radius: inherit;
+	border-bottom-left-radius: 0;
+	border-top-left-radius: 0
+}
+.cz_row_shape_full_filled_left .row:before, 
+.cz_row_shape_full_filled_right .row:after,
+.elms_row .cz_row_shape_full_filled_left:before, 
+.elms_row .cz_row_shape_full_filled_right:after {
+	width: 3000px !important;
+	transform: none;
+	transform: translateX(-96%) !important;
+	border-radius: 0
+}
+.cz_row_shape_no_left .row:before,
+.cz_row_shape_no_right .row:after {
+	visibility: hidden;
+	opacity: 0
+}
+.cz_row_shape_full_filled_right .row:after,
+.elms_row .cz_row_shape_full_filled_right:after {
+	transform: translateX(96%) !important
+}
+.cz_row_shape_1 .row:before,
+.elms_row .cz_row_shape_1:before {
+	transform: translateX(-40%) skewX(45deg)
+}
+.cz_row_shape_1 .row:after,
+.elms_row .cz_row_shape_1:after {
+	transform: translateX(40%) skewX(-45deg)
+}
+.cz_row_shape_2 .row:before,
+.elms_row .cz_row_shape_2:before {
+	transform: translateX(-40%) skewX(-45deg)
+}
+.cz_row_shape_2 .row:after,
+.elms_row .cz_row_shape_2:after {
+	transform: translateX(40%) skewX(45deg)
+}
+.cz_row_shape_3 .row:before,
+.elms_row .cz_row_shape_3:before {
+	transform: translateX(-40%) skewX(-45deg)
+}
+.cz_row_shape_3 .row:after,
+.elms_row .cz_row_shape_3:after {
+	transform: translateX(40%) skewX(-45deg)
+}
+.cz_row_shape_4 .row:before,
+.elms_row .cz_row_shape_4:before {
+	transform: translateX(-40%) skewX(45deg)
+}
+.cz_row_shape_4 .row:after,
+.elms_row .cz_row_shape_4:after {
+	transform: translateX(40%) skewX(45deg)
+}
+.cz_row_shape_none .row:after,
+.cz_row_shape_none .row:before{
+	display: none
+}
+.cz_row_shape_radius .row:before,
+.elms_row .cz_row_shape_radius:before {
+	left: -8px;
+	border-radius: 20px !important
+}
+.cz_row_shape_radius .row:after,
+.elms_row .cz_row_shape_radius:after {
+	right: -8px;
+	border-radius: 20px !important
+}
